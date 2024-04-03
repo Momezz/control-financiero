@@ -1,0 +1,36 @@
+ .financial_item__container {
+   grid-template-columns: 40% 40% 20%;
+   color: var(--color-item);
+   align-items: center;
+   font-size: 18px;
+   display: grid;
+   height: 40px;
+   padding: 5px;
+   width: 350px;
+ }
+
+ .financial_item__title {
+   width: 40%;
+ }
+
+ .financial_item__paragraph {
+   display: flex;
+   width: 40%;
+ }
+
+ .financial_item__paragraph::before {
+   content: "$";
+ }
+
+ .financial_item__percentage {
+   background-color: var(--background-percentage);
+   padding: 1px;
+ }
+
+ .financial_item__income {
+   background-color: var(--positive-item);
+ }
+
+ .financial_item__expenses {
+   background-color: var(--negative-item);
+ }
