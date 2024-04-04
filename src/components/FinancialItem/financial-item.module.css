@@ -2,6 +2,7 @@
    grid-template-columns: 40% 40% 20%;
    color: var(--color-item);
    align-items: center;
+   margin-bottom: 15px;
    font-size: 18px;
    display: grid;
    height: 40px;
@@ -33,4 +34,12 @@
 
  .financial_item__expenses {
    background-color: var(--negative-item);
+ }
+
+ @media(min-width: 1044px) {
+  .financial_item__container {
+    width: 400px;
+    height: 45px;
+    padding: 8px;
+  }
  }
