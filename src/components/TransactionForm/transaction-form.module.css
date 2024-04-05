@@ -1,0 +1,160 @@
+.transaction_form__container {
+  background: rgb(242, 76, 76);
+  background: linear-gradient(0deg, #c878789b 0%, #2dcddf99 100%);
+  color: var(--color-item);
+  margin: 0 auto;
+  padding: 5px;
+  width: 100%;
+}
+
+.transaction_form__option {
+  justify-content: space-around;
+  margin-top: 12px;
+  display: flex;
+  padding: 1px;
+  height: 40px;
+  width: 100%;
+}
+
+.transaction_form__button {
+  transition: transform 0.5s ease;
+  color: var(--color-item);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  margin: 1px;
+}
+
+.transaction_form__button:hover {
+  box-shadow: -2px 0px 14px 0px rgba(129, 149, 188, 0.75);
+  -webkit-box-shadow: -2px 0px 14px 0px rgba(129, 149, 188, 0.75);
+  -moz-box-shadow: -2px 0px 14px 0px rgba(129, 149, 188, 0.75);
+  transform: scale(1.1);
+}
+
+.transaction_form__button_add {
+  background-color: var(--positive-item);
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.transaction_form__button_sub {
+  background-color: var(--negative-item);
+  font-size: 25px;
+}
+
+.transaction_form__category {
+  border: 1px solid var(--color-item);
+  flex-direction: column;
+  margin-bottom: 10PX;
+  text-align: center;
+  margin-top: 12px;
+  display: flex;
+  height: 90px;
+  width: 100%;
+}
+
+.transaction_form__category_btn {
+  border: 1px solid var(--color-item);
+  transition: transform 0.5s ease;
+  margin-top: 5px;
+  margin: 0 auto;
+  height: 40px;
+  width: 50%;
+}
+
+.transaction_form__category_btn:hover {
+  transform: scale(1.1);
+}
+
+.transaction_form__category_label {
+  margin-top: 12px;
+  height: 40px;
+}
+
+.transaction_form__category_select {
+  background-color: #7bcdd699 ;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.transaction_form__label {
+  margin-bottom: 5px;
+  margin-top: 12px;
+  height: 40px;
+  width: 100%;
+}
+
+.transaction_form__input {
+  border: 1px solid var(--color-item);
+  background-color: transparent;
+  padding: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.transaction_form__btn_cont {
+  padding-right: 20px;
+  margin-top: 15px;
+  text-align: end;
+  width: 100%;
+}
+
+.transaction_form__btn {
+  transition: transform 0.5s ease;
+  border: 2px solid var(--done);
+  margin-bottom: 15px;
+  border-radius: 50%;
+  color: var(--done);
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.transaction_form__btn:hover {
+  transform: scale(1.1);
+}
+
+@media(min-width: 1044px){
+  .transaction_form__container {
+    min-width: 500px;
+    font-size: 20px;
+    display: flex;
+    width: 100%;
+  }
+
+  .transaction_form__option {
+    border: 1px solid var(--color-item);
+    flex-direction: column;
+    display: flex;
+    height: 80px;
+    width: 60px;
+  }
+
+  .transaction_form__category {
+    height: 80px;
+  }
+
+  .transaction_form__category_btn {
+    width: 70%;
+  }
+
+  .transaction_form__button {
+    height: 40px;
+    width: 40px;
+    margin: 1px;
+  }
+
+  .transaction_form__input {
+    height: 80px;
+  }
+
+  .transaction_form__btn_cont {
+    text-align: center;
+    margin-top: 35px;
+  }
+
+  .transaction_form__btn {
+    font-size: 40px;
+  }
+}
