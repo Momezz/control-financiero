@@ -37,6 +37,17 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+input:focus {
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+select::-moz-focus-inner {
+  border: 0;
+}
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -57,9 +68,6 @@ body {
 
 img {
   user-select: none;
-}
-
-img {
   max-width: 100%;
   height: auto;
 }
@@ -74,17 +82,8 @@ a {
 
 html, body {
   background-color: #ffffff;
-}
-
-html {
   font-size: 16px;
-}
-
-html, body {
   min-width: 320px;
-}
-
-html, body {
   overflow-x: hidden;
 }
 
