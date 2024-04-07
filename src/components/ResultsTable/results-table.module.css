@@ -1,0 +1,38 @@
+.results_table__container {
+  margin: 1px;
+  width: 100%;
+}
+
+.results_table__body {
+  padding: 5px;
+}
+
+.results_table__tr {
+  border: 1px solid rgba(128, 128, 128, 0.28);
+  background-color: var(--color-item);
+  height: 30px;
+}
+
+.results_table__tr:hover {
+  box-shadow: 0 6px 10px var(--positive-item);
+}
+
+.results_table__td_item {
+  color: var(--positive-item);
+  vertical-align: middle;
+  padding: 5px;
+  width: 50%;
+}
+
+.results_table__td_value {
+  color: var(--positive-item);
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.results_table__td_percentage {
+  color: var(--negative-item);
+  vertical-align: middle;
+  padding: 5px;
+  width: 10%;
+}
