@@ -1,0 +1,32 @@
+.table_container__container {
+  background-color: var(--table-container-background);
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  padding: 7px;
+}
+
+.table_container__sub_container {
+  margin: 10px;
+  width: 100%;
+}
+
+.table_container__title {
+  color: var(--positive-item);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 22px;
+  margin: 5px;
+}
+
+.table_container__title_egresos {
+  color: var(--negative-item);
+}
+
+@media(min-width:768px) {
+  .table_container__container {
+    flex-direction: row;
+    display: flex;
+  }
+}
