@@ -1,10 +1,9 @@
 :root {
-  --positive-item: #2DCDDF;
-  --negative-item: #F24C4C;
-  --color-item: #F7F5F2;
+  --positive-item: #b7dbe1;
+  --negative-item: #272727;
+  --color-item: #FFFFFF;
   --background-percentage: #dc1818;
-  --background-layer: #4800ff21;
-  --done: #03C988;
-  --table-container-background: #F0F3FF;
-  --footer-background: #2D2F31;
+  --background-banner: #27272787;
+  --done: #5ac2d4;
+  --body-background: #0b0b0b;
 }

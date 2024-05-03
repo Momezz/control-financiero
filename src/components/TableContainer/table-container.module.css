@@ -1,5 +1,5 @@
 .table_container__container {
-  background-color: var(--table-container-background);
+  background-color: var(--body-background);
   justify-content: center;
   flex-direction: column;
   align-items: center;
