@@ -16,6 +16,7 @@ const TransactionForm = () => {
   const { form, handleChange } = useForm({});
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log('Form-> ', form);
   };
 
   return (
@@ -23,19 +24,17 @@ const TransactionForm = () => {
       className={styles.transaction_form__container}
       onSubmit={handleSubmit}
     >
-      <div className={styles.transaction_form__option}>
-        <select onChange={handleChange} name="transactionType">
-          <option className={styles.transaction_form__option} value="">
-            Option{" "}
-          </option>
-          <option className={styles.transaction_form__button} value="income">
-            Ingreso
-          </option>
-          <option className={styles.transaction_form__button} value="egress">
-            Egreso
-          </option>
-        </select>
-      </div>
+      <select className={styles.transaction_form__category_select} onChange={handleChange} name="transactionType">
+        <option className={styles.transaction_form__category_select} value="">
+          Option{" "}
+        </option>
+        <option className={styles.transaction_form__category_select} value="income">
+          Ingreso
+        </option>
+        <option className={styles.transaction_form__category_select} value="egress">
+          Egreso
+        </option>
+      </select>
       <div className={styles.transaction_form__category}>
         <button className={styles.transaction_form__category_btn} type="button">
           Crear categoria
