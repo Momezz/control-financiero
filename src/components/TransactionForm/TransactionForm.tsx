@@ -4,18 +4,24 @@ import styles from '@/components/TransactionForm/transaction-form.module.css';
 import { MdDone } from 'react-icons/md';
 import React, { useState } from 'react';
 import useForm from '@/redux/hooks';
+import { createTransaction } from '@/services/transactions';
 
 const TransactionForm = () => {
   const opciones = [
-    "Seleccionar categoria",
+    "",
     "Opción 1",
     "Opción 2",
     "Opción 3",
   ];
-  const [selectedOption, setSelectedOption] = useState(opciones[0]);
   const { form, handleChange } = useForm({});
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    try {
+      createTransaction(form);
+    } catch (error) {
+      console.error('error', error);
+    }
   };
 
   return (
@@ -24,7 +30,7 @@ const TransactionForm = () => {
       onSubmit={handleSubmit}
     >
       <div className={styles.transaction_form__option}>
-        <select onChange={handleChange} name="transactionType">
+        <select onChange={handleChange} name="transactionType" required>
           <option className={styles.transaction_form__option} value="">
             Option{" "}
           </option>
@@ -43,14 +49,15 @@ const TransactionForm = () => {
         <select
           className={styles.transaction_form__category_select}
           name="category"
-          value={selectedOption}
           onChange={handleChange}
+          required
         >
+          
           {opciones.map((opcion, index) => (
             <option
               className={styles.transaction_form__category_select}
               key={index}
-              value={opcion}
+              
             >
               {opcion}
             </option>
@@ -65,16 +72,18 @@ const TransactionForm = () => {
           placeholder="Descripcion"
           onChange={handleChange}
           className={styles.transaction_form__input}
+          required
         />
       </div>
       <div className={styles.transaction_form__label}>
         <input
           type="number"
-          id="value"
-          name="value"
+          id="amount"
+          name="amount"
           placeholder="Valor"
           onChange={handleChange}
           className={styles.transaction_form__input}
+          required
         />
       </div>
       <div className={styles.transaction_form__btn_cont}>
