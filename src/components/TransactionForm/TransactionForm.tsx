@@ -5,6 +5,7 @@ import { MdDone } from 'react-icons/md';
 import React, { useState } from 'react';
 import useForm from '@/redux/hooks';
 import { createTransaction } from '@/services/transactions';
+import CreateCategory from '../CreateCategory/CreateCategory';
 
 const TransactionForm = () => {
   const opciones = [
@@ -16,7 +17,6 @@ const TransactionForm = () => {
   const { form, handleChange } = useForm({});
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
     try {
       createTransaction(form);
     } catch (error) {
@@ -25,7 +25,7 @@ const TransactionForm = () => {
   };
 
   return (
-    <form
+    <><CreateCategory /><form
       className={styles.transaction_form__container}
       onSubmit={handleSubmit}
     >
@@ -43,21 +43,16 @@ const TransactionForm = () => {
         </select>
       </div>
       <div className={styles.transaction_form__category}>
-        <button className={styles.transaction_form__category_btn} type="button">
-          Crear categoria
-        </button>
         <select
           className={styles.transaction_form__category_select}
           name="category"
           onChange={handleChange}
           required
         >
-          
           {opciones.map((opcion, index) => (
             <option
               className={styles.transaction_form__category_select}
               key={index}
-              
             >
               {opcion}
             </option>
@@ -72,8 +67,7 @@ const TransactionForm = () => {
           placeholder="Descripcion"
           onChange={handleChange}
           className={styles.transaction_form__input}
-          required
-        />
+          required />
       </div>
       <div className={styles.transaction_form__label}>
         <input
@@ -83,15 +77,14 @@ const TransactionForm = () => {
           placeholder="Valor"
           onChange={handleChange}
           className={styles.transaction_form__input}
-          required
-        />
+          required />
       </div>
       <div className={styles.transaction_form__btn_cont}>
         <button className={styles.transaction_form__btn} type="submit">
           <MdDone />
         </button>
       </div>
-    </form>
+    </form></>
   );
 };
 
