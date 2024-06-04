@@ -2,18 +2,25 @@
 
 import styles from '@/components/TransactionForm/transaction-form.module.css';
 import { MdDone } from 'react-icons/md';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useForm from '@/redux/hooks';
 import { createTransaction } from '@/services/transactions';
+import { getCategories } from '@/services/categories';
 import CreateCategory from '../CreateCategory/CreateCategory';
 
 const TransactionForm = () => {
-  const opciones = [
-    "",
-    "Opción 1",
-    "Opción 2",
-    "Opción 3",
-  ];
+  const [options, setOptions] = useState([]);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const categories = await getCategories();
+        setOptions(categories);
+      } catch (error) {
+        
+      }
+    }
+    fetchCategories();
+  }, []);
   const { form, handleChange } = useForm({});
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -49,12 +56,12 @@ const TransactionForm = () => {
           onChange={handleChange}
           required
         >
-          {opciones.map((opcion, index) => (
+          {options.map((option, index) => (
             <option
               className={styles.transaction_form__category_select}
               key={index}
             >
-              {opcion}
+              {option.name}
             </option>
           ))}
         </select>
