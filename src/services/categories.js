@@ -8,8 +8,17 @@ export const createCategory = async (category) => {
     },
     body: JSON.stringify(category),
   };
-  const res = await fetch(`${BASE_URL}/api/categories`, options);
-  const result = await res.json();
-  return result;
+  const response = await fetch(`${BASE_URL}/api/categories`, options);
+  const jsonData = await response.json();
+  return jsonData;
 }
 
+export const getCategories = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/categories`);
+    const jsonData = await response.json();
+    return jsonData;
+  } catch (error) {
+    console.error(error);
+  }
+};
