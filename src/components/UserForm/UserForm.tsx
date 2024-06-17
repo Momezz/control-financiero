@@ -1,15 +1,24 @@
 "use client";
 
+import { AppDispatch } from '../../redux/store';
+import { useDispatch } from 'react-redux';
 import styles from './user-form.module.css';
 import useForm from '@/redux/hooks';
-import { createUser } from '@/services/users';
+import { createUser } from '@/redux/features/userSlice';
 
 const UserForm = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const { form, handleChange } = useForm({});
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      createUser(form);
+      const newUser = await dispatch(createUser({
+        ...form,
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        password: form.password
+      })).unwrap();
     } catch (error) {
       console.error(error);
     }
