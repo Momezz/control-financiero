@@ -27,7 +27,7 @@ const UserForm = () => {
     <article className={styles.user_form__container}>
       <form onSubmit={handleSubmit} className={styles.user_form__subcont}>
         <input
-          type="firstName"
+          type="text"
           id="firstName"
           name="firstName"
           placeholder="Nombre"
@@ -36,7 +36,7 @@ const UserForm = () => {
           required
         />
         <input
-          type="lastName"
+          type="text"
           id="lastName"
           name="lastName"
           placeholder="Apellidos"
