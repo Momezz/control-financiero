@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import financialItemSlice from './features/financialItemSlice';
+import financialItemSlice from './features/financialItem/financialItemSlice';
+import totalFinancesSlice from './features/totalFinances/totalFinancesSlice';
 import userSlice from './features/userSlice';
 
 const store = configureStore({
   reducer: {
     item: financialItemSlice,
     user: userSlice,
+    totalFinances: totalFinancesSlice,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });
