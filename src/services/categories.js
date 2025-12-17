@@ -15,7 +15,9 @@ export const createCategory = async (category) => {
 
 export const getCategories = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/api/categories`);
+    const response = await fetch(`${BASE_URL}/api/categories`, {
+      cache: 'no-cache',
+    });
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {

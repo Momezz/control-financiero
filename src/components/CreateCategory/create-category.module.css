@@ -2,8 +2,8 @@
   color: var(--color-item);
   border-radius: 5px;
   position: relative;
-  width: 350px;
   height: 35px;
+  width: 100%;
 }
 
 .create_category__input {
