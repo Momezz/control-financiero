@@ -1,14 +1,14 @@
 "use client";
 
-import styles from '@/components/TransactionForm/transaction-form.module.css';
 import { useDispatch } from 'react-redux';
-import { MdDone } from 'react-icons/md';
 import React, { useEffect, useState } from 'react';
+import { AppDispatch } from '@/redux/store';
+import { MdDone } from 'react-icons/md';
 import useForm from '@/redux/hooks';
-import { createFinancialItem } from '@/redux/features/financialItemSlice';
+import { createFinancialItem } from '@/redux/features/financialItem/financialItemSlice';
 import { getCategories } from '@/services/categories';
 import CreateCategory from '../CreateCategory/CreateCategory';
-import { AppDispatch } from '@/redux/store';
+import styles from '@/components/TransactionForm/transaction-form.module.css';
 
 const TransactionForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -30,7 +30,7 @@ useEffect(() => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const newItem = await dispatch(createFinancialItem({
+      await dispatch(createFinancialItem({
         ...form,
         transactionType: form.transactionType,
         category: form.category,

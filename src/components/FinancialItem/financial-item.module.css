@@ -1,6 +1,7 @@
  .financial_item__container {
    grid-template-columns: 40% 40% 20%;
    color: var(--color-item);
+   border-radius: 5px;
    align-items: center;
    margin-bottom: 15px;
    font-size: 18px;
@@ -21,6 +22,7 @@
 
  .financial_item__paragraph::before {
    content: "$";
+   margin-right: 6px;
  }
 
  .financial_item__percentage {
@@ -29,17 +31,58 @@
  }
 
  .financial_item__income {
-   background-color: var(--positive-item);
+   background-color: var(--done);
  }
 
  .financial_item__expenses {
-   background-color: var(--negative-item);
+   background-color: var(--light-gradient);
+ }
+
+ .spendingRate {
+   color: var(--background-percentage);
+   position: relative;
+   font-weight: 600;
+   cursor: help;
+ }
+
+ .tooltip {
+   position: absolute;
+   bottom: 125%;
+   left: 50%;
+   transform: translateX(-50%);
+   background-color: var(--body-background);
+   color: var(--color-item);
+   padding: 6px 10px;
+   border-radius: 6px;
+   font-size: 0.75rem;
+   white-space: nowrap;
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.2s ease;
+   z-index: 10;
+ }
+
+ .spendingRate:hover .tooltip {
+   opacity: 1;
+ }
+
+ .rateLow {
+   color: var(--done);
+ }
+
+ .rateMedium {
+   color: var(--positive-item);
+ }
+
+ .rateHigh {
+   color: var(--background-percentage);
  }
 
  @media(min-width: 1044px) {
-  .financial_item__container {
-    width: 400px;
-    height: 45px;
-    padding: 8px;
-  }
+   .financial_item__container {
+     width: 400px;
+     height: 45px;
+     padding: 8px;
+   }
  }
+ 
