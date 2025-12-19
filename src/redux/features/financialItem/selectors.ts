@@ -4,6 +4,16 @@ import { RootState } from '@/redux/store';
 const selectFinancialItems = (state: RootState) =>
   state.item.financialitems;
 
+export const selectIncomeList = createSelector(
+  [selectFinancialItems],
+  items => items.filter(item => item.transactionType === 'income')
+);
+
+export const selectExpenseList = createSelector(
+  [selectFinancialItems],
+  items => items.filter(item => item.transactionType === 'expense')
+);
+
 export const selectTotalIncome = createSelector(
   [selectFinancialItems],
   items =>
@@ -32,3 +42,13 @@ export const selectorSpedingRAte = createSelector(
     return (expense / income) * 100;
   }
 )
+
+export const selectIncomes = (statte: RootState) =>
+  statte.item.financialitems.filter(
+    item => item.transactionType === 'income'
+  );
+
+export const selectExpenses = (statte: RootState) =>
+  statte.item.financialitems.filter(
+    item => item.transactionType === 'expense'
+  );

@@ -20,8 +20,34 @@
   margin: 5px;
 }
 
+.component_container {
+  margin-top: 10px;
+}
+
 .table_container__title_egresos {
-  color: var(--negative-item);
+  color: var(--light-gradient);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 22px;
+  margin: 5px;
+}
+
+.table_container__component_con {
+  overflow: auto;
+  height: 300px;
+}
+
+.table_container__component_con::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table_container__component_con::-webkit-scrollbar-thumb {
+  background-color: var(--dark-gradient);
+  border-radius: 4px;
+}
+
+.table_container__component_con::-webkit-scrollbar-track {
+  background-color: var(--light-gradient);
 }
 
 @media(min-width:768px) {
