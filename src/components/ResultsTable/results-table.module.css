@@ -1,4 +1,5 @@
 .results_table__container {
+  max-height: 100px;
   margin: 1px;
   width: 100%;
 }
@@ -8,13 +9,13 @@
 }
 
 .results_table__tr {
-  border: 1px solid rgba(128, 128, 128, 0.28);
+  border: 1px solid var(--icons-actions);
   background-color: var(--color-item);
   height: 30px;
 }
 
 .results_table__tr:hover {
-  box-shadow: 0 6px 10px var(--positive-item);
+  background-color: rgb(250, 248, 250);
 }
 
 .results_table__td_item {
@@ -28,6 +29,7 @@
   color: var(--positive-item);
   vertical-align: middle;
   padding: 5px;
+  width: 30%;
 }
 
 .results_table__td_percentage {
@@ -35,4 +37,59 @@
   vertical-align: middle;
   padding: 5px;
   width: 10%;
+}
+
+.results_table__td_actions {
+  vertical-align: middle;
+  padding: 8px 12px;
+}
+
+.results_table__icons {
+  color: var(--icons-actions);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 9px;
+}
+
+.results_table__icon_button {
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  padding: 4px;
+  border: none;
+}
+
+.results_table__icon_button svg {
+  font-size: 18px;
+}
+
+.results_table__icon_button:hover {
+  color: var(--background-percentage)
+}
+
+.results_table__icon_button:nth-child(2):hover {
+  color: var(--light-gradient);
+}
+
+.results_table__icon_button:nth-child(3):hover {
+  color: var(--positive-item);
+}
+
+.results_table__button_container {
+  background: linear-gradient(0deg, var(--light-gradient) 0%, var(--dark-gradient) 100%);
+  justify-content: center;
+  align-items: center;
+  color: var(--done);
+  font-size: 18px;
+  display: flex;
+  height: 40px;
+  width: 100%;
+  gap: 20px;
+}
+
+.results_table__button {
+  font-size: 22px;
 }

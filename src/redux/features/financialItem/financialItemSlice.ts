@@ -30,7 +30,11 @@ export const getFinancialItemById = createAsyncThunk<Item, string>('financial-it
 export const getFinancialItems = createAsyncThunk<Item[]>('financial-item/getFinancialItems', async () => {
   const response = await fetch(`${BASE_URL}/api/financial-item`);
   const data = await response.json();
-  return data;
+  return data.sort(
+    (a, b) =>
+      new Date(b.createdAt).getTime() -
+      new Date(a.createdAt).getTime()
+  );
 });
 
 export const createFinancialItem = createAsyncThunk<Item, Item>('financial-item/createFinancialItem', async (financialitem) => {
