@@ -4,6 +4,14 @@
   width: 100%;
 }
 
+.results_table__see_details_container {
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  display: flex;
+  width: 100%;
+}
+
 .results_table__body {
   padding: 5px;
 }
@@ -80,9 +88,9 @@
 
 .results_table__button_container {
   background: linear-gradient(0deg, var(--light-gradient) 0%, var(--dark-gradient) 100%);
+  color: var(--positive-item);
   justify-content: center;
   align-items: center;
-  color: var(--done);
   font-size: 18px;
   display: flex;
   height: 40px;
@@ -92,4 +100,9 @@
 
 .results_table__button {
   font-size: 22px;
+}
+
+.results_table__button:hover {
+  color: var(--done);
+  cursor: pointer;
 }

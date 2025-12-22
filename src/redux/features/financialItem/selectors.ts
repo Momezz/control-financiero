@@ -52,3 +52,6 @@ export const selectExpenses = (statte: RootState) =>
   statte.item.financialitems.filter(
     item => item.transactionType === 'expense'
   );
+
+export const selectSelectedItem = (state: RootState) =>
+  state.item.selectedItem;

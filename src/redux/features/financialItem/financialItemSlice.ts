@@ -1,25 +1,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-interface Item {
-  id?: string;
+export interface Item {
+  _id: string;
   transactionType: string;
   category: string;
   description: string;
   amount: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface ItemState {
   financialitems: Item[];
+  selectedItem: Item | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ItemState = {
   financialitems: [],
+  selectedItem: null,
   loading: false,
   error: null,
 };
+
 
 export const getFinancialItemById = createAsyncThunk<Item, string>('financial-item/getFinancialItemById', async (id) => {
   const resp = await fetch(`${BASE_URL}/api/financial-item/${id}`);
@@ -86,16 +91,16 @@ const financialItemSlice = createSlice({
       state.financialitems = action.payload;
     });
     builder.addCase(getFinancialItemById.fulfilled, (state, action) => {
-      state.financialitems = [action.payload];
+      state.selectedItem = action.payload;
     });
     builder.addCase(createFinancialItem.fulfilled, (state, action) => {
       state.financialitems.push(action.payload);
     });
     builder.addCase(deleteFinancialItem.fulfilled, (state, action) => {
-      state.financialitems = state.financialitems.filter(item => item.id !== action.payload);
+      state.financialitems = state.financialitems.filter(item => item._id !== action.payload);
     });
     builder.addCase(updateFinancialItem.fulfilled, (state, action) => {
-      const index = state.financialitems.findIndex(item => item.id === action.payload.id);
+      const index = state.financialitems.findIndex(item => item._id === action.payload._id);
       if (index !== -1) {
         state.financialitems[index] = action.payload;
       }

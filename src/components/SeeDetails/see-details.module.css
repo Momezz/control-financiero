@@ -1,0 +1,62 @@
+.see_details__container {
+  background: linear-gradient(0deg, var(--light-gradient) 0%, var(--dark-gradient) 100%);
+  justify-content: space-around;
+  color: var(--color-item);
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  height: 100%;
+  padding: 7px;
+  width: 100%;
+}
+
+.see_details__title {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.see_details__price {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 33px;
+}
+
+.see_details__price_container_income {
+  background-color: var(--successful-item);
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.see_details__price_container_expense {
+  background-color: var(--background-percentage);
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.see_details__date {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 22px;
+}
+
+.see_details__btn {
+  background-color: var(--positive-item);
+  transition: background-color 0.3s ease;
+  color: var(--color-item);
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  width: 200px;
+}
+
+.see_details__btn:hover {
+  background-color: var(--done);
+}
