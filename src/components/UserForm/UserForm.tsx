@@ -2,13 +2,23 @@
 
 import { AppDispatch } from '../../redux/store';
 import { useDispatch } from 'react-redux';
-import styles from './user-form.module.css';
+import { User } from '@/redux/features/userSlice';
 import useForm from '@/redux/hooks';
 import { createUser } from '@/redux/features/userSlice';
+import styles from './user-form.module.css';
 
-const UserForm = () => {
+interface UserForm {
+  onClose: () => void;
+}
+
+const UserForm = ({ onClose }: UserForm) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { form, handleChange } = useForm({});
+  const { form, handleChange } = useForm<User>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  });
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -62,12 +72,13 @@ const UserForm = () => {
           onChange={handleChange}
           required
         />
-        <input
+        <button
           className={styles.user_form__btn}
-          type="submit"
-          value="Sign in"
-        />
+          type="submit">
+          Sign up
+        </button>
       </form>
+      <button onClick={onClose} className={styles.user_form__btn_text}>Ya tengo una cuenta</button>
     </article>
   );
 };

@@ -1,9 +1,11 @@
-"use client";
+import styles from "./login-form.module.css";
 
-import styles from './login-form.module.css';
+interface LoginUser {
+  onClose: () => void;
+}
 
-const LoginForm = () => {
-  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+const LoginForm = ({ onClose }: LoginUser) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     console.log("Submit");
   };
@@ -31,6 +33,9 @@ const LoginForm = () => {
         <br />
         <input className={styles.login__btn} type="submit" value="Sign in" />
       </form>
+      <button onClick={onClose} className={styles.login__btn_text}>
+        Aún no tengo una cuenta
+      </button>
     </article>
   );
 };

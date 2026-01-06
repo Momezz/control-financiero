@@ -1,4 +1,12 @@
 .login__container {
+  background-image: url('../../../public/login-background.jpg');
+  background-color: var(--background-banner);
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  background-size: cover;
+  align-items: center;
+  display: flex;
   height: 100vh;
   width: 100%;
 }
