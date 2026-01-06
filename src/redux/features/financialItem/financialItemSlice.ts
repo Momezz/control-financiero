@@ -25,6 +25,12 @@ const initialState: ItemState = {
   error: null,
 };
 
+export interface FinancialItemFormData {
+  transactionType: string;
+  category: string;
+  description: string;
+  amount: number | string;
+}
 
 export const getFinancialItemById = createAsyncThunk<Item, string>('financial-item/getFinancialItemById', async (id) => {
   const resp = await fetch(`${BASE_URL}/api/financial-item/${id}`);
@@ -42,7 +48,7 @@ export const getFinancialItems = createAsyncThunk<Item[]>('financial-item/getFin
   );
 });
 
-export const createFinancialItem = createAsyncThunk<Item, Item>('financial-item/createFinancialItem', async (financialitem) => {
+export const createFinancialItem = createAsyncThunk<Item, FinancialItemFormData>('financial-item/createFinancialItem', async (financialitem) => {
   const options = {
     method: 'POST',
     headers: {
@@ -64,7 +70,7 @@ export const deleteFinancialItem = createAsyncThunk<string, string>('financial-i
   return id;
 });
 
-export const updateFinancialItem = createAsyncThunk<Item, { id: string; financialitem: Partial<Item> }>('financial-item/updateFinancialItem', async ({ id, financialitem }) => {
+export const updateFinancialItem = createAsyncThunk<Item, { id: string; financialitem: Partial<FinancialItemFormData> }>('financial-item/updateFinancialItem', async ({ id, financialitem }) => {
   const options = {
     method: 'PATCH',
     headers: {

@@ -8,24 +8,31 @@ import useForm from '@/redux/hooks';
 import { createFinancialItem } from '@/redux/features/financialItem/financialItemSlice';
 import { getCategories } from '@/services/categories';
 import CreateCategory from '../CreateCategory/CreateCategory';
+import { FinancialItemFormData } from '@/redux/features/financialItem/financialItemSlice';
 import styles from '@/components/TransactionForm/transaction-form.module.css';
 
 const TransactionForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [options, setOptions] = useState([]);
-  const { form, handleChange } = useForm({});
-  const fetchCategories = async () => {
-  try {
-    const categories = await getCategories();
-    setOptions(categories);
-  } catch (error) {
-    console.log(error);
-  }
-};
+  const { form, handleChange } = useForm<FinancialItemFormData>({
+    transactionType: "",
+    category: "",
+    description: "",
+    amount: ""
+  });
 
-useEffect(() => {
-  fetchCategories();
-}, []);
+  const fetchCategories = async () => {
+    try {
+      const categories = await getCategories();
+      setOptions(categories);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,7 +42,7 @@ useEffect(() => {
         transactionType: form.transactionType,
         category: form.category,
         description: form.description,
-        amount: parseFloat(form.amount) || 0
+        amount: Number(form.amount) || 0
       }))
     } catch (error) {
       console.error('error', error);

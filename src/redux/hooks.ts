@@ -1,21 +1,18 @@
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 
-interface FormValues {
-  [key: string]: string;
+function useForm<T extends object>(initialValues: T) {
+  const [form, setForm] = useState<T>(initialValues);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return { form, handleChange };
 }
 
-type HandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-
-const useForm = (initialValue: FormValues) => {
-  const [form, setForm] = useState<FormValues>(initialValue);
-  const handleChange: HandleChange = (event) => {
-    const { value, name } = event.target;
-    setForm({ ...form, [name]: value });
-  };
-  return {
-    form,
-    handleChange,
-  };
-};
-
 export default useForm;
+
