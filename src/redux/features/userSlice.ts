@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-interface User {
+export interface User {
   _id?: string;
   firstName: string;
   lastName: string;
