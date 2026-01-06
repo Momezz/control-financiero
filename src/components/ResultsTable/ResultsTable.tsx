@@ -5,8 +5,9 @@ import { MdDeleteForever } from 'react-icons/md';
 import { FaEdit, FaEye, FaChevronCircleRight, FaChevronCircleLeft } from 'react-icons/fa';
 import { formatNumber } from '@/utils/numberFormat';
 import type { Item } from '@/redux/features/financialItem/financialItemSlice';
-import styles from '@/components/ResultsTable/results-table.module.css';
 import SeeDetails from '../SeeDetails/SeeDetails';
+import EditItem from '../EditItem/EditItem';
+import styles from '@/components/ResultsTable/results-table.module.css';
 
 interface ResultsTableProps {
   data: Item[];
@@ -16,6 +17,7 @@ const ITEM_PER_PAGE = 10;
 const ResultsTable: React.FC<ResultsTableProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showDetails, setShowDetails] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const totalPages = Math.ceil(data.length / ITEM_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEM_PER_PAGE;
@@ -31,6 +33,16 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ data }) => {
               item={selectedItem}
               onClose={() => {
                 setShowDetails(false);
+                setSelectedItem(null);
+              }}
+            />
+          </div>
+        ) : showEdit && selectedItem ? (
+          <div className={styles.results_table__see_details_container}>
+            <EditItem
+              item={selectedItem}
+              onClose={() => {
+                setShowEdit(false);
                 setSelectedItem(null);
               }}
             />
@@ -51,7 +63,14 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ data }) => {
                       <button className={styles.results_table__icon_button}>
                         <MdDeleteForever />
                       </button>
-                      <button className={styles.results_table__icon_button}>
+                      <button
+                        className={styles.results_table__icon_button}
+                        onClick={() => {
+                          setSelectedItem(item);
+                          setShowDetails(false);
+                          setShowEdit(true);
+                        }}
+                      >
                         <FaEdit />
                       </button>
                       <button
