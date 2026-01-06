@@ -6,6 +6,7 @@ import { FaEdit, FaEye, FaChevronCircleRight, FaChevronCircleLeft } from 'react-
 import { formatNumber } from '@/utils/numberFormat';
 import type { Item } from '@/redux/features/financialItem/financialItemSlice';
 import SeeDetails from '../SeeDetails/SeeDetails';
+import DeleteItem from '../DeleteItem/DeleteItem';
 import EditItem from '../EditItem/EditItem';
 import styles from '@/components/ResultsTable/results-table.module.css';
 
@@ -18,6 +19,7 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const totalPages = Math.ceil(data.length / ITEM_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEM_PER_PAGE;
@@ -47,6 +49,16 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ data }) => {
               }}
             />
           </div>
+        ) : showDelete && selectedItem ? (
+          <div className={styles.results_table__see_details_container}>
+            <DeleteItem
+              item={selectedItem}
+              onClose={() => {
+                setShowEdit(false);
+                setSelectedItem(null);
+              }}
+            />
+          </div>
         ) : (
           <table className={styles.results_table__container}>
             <tbody className={styles.results_table__body}>
@@ -60,14 +72,19 @@ const ResultsTable: React.FC<ResultsTableProps> = ({ data }) => {
                   </td>
                   <td className={styles.results_table__td_actions}>
                     <div className={styles.results_table__icons}>
-                      <button className={styles.results_table__icon_button}>
+                      <button
+                        className={styles.results_table__icon_button}
+                        onClick={() => {
+                          setSelectedItem(item);
+                          setShowDelete(true);
+                        }}
+                      >
                         <MdDeleteForever />
                       </button>
                       <button
                         className={styles.results_table__icon_button}
                         onClick={() => {
                           setSelectedItem(item);
-                          setShowDetails(false);
                           setShowEdit(true);
                         }}
                       >
