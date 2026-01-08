@@ -1,19 +1,33 @@
-import styles from "./login-form.module.css";
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
+import useForm from '@/redux/hooks';
+import { setAccessToken } from '@/redux/features/auth/authSlice';
+import { login } from '@/services/auth';
+import styles from './login-form.module.css';
 
 interface LoginUser {
   onClose: () => void;
 }
 
+interface userLogged {
+  email: string,
+  password: string
+}
+
 const LoginForm = ({ onClose }: LoginUser) => {
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    console.log("Submit");
+  const dispatch = useDispatch<AppDispatch>();
+  const { form, handleChange } = useForm<userLogged>({ email: "", password: "" });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await login(form.email, form.password);
+    dispatch(setAccessToken(result.accessToken));
   };
 
   return (
     <article className={styles.login__container}>
       <form className={styles.login__subcont} onSubmit={handleSubmit}>
         <input
+          onChange={handleChange}
           type="email"
           id="email"
           name="email"
@@ -23,6 +37,7 @@ const LoginForm = ({ onClose }: LoginUser) => {
         />
         <br />
         <input
+          onChange={handleChange}
           type="password"
           id="password"
           name="password"
