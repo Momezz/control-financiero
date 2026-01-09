@@ -13,6 +13,7 @@ export interface Item {
 
 interface ItemState {
   financialitems: Item[];
+  isAuthenticated: boolean;
   selectedItem: Item | null;
   loading: boolean;
   error: string | null;
@@ -20,6 +21,7 @@ interface ItemState {
 
 const initialState: ItemState = {
   financialitems: [],
+  isAuthenticated: false,
   selectedItem: null,
   loading: false,
   error: null,
@@ -70,19 +72,33 @@ export const deleteFinancialItem = createAsyncThunk<string, string>('financial-i
   return id;
 });
 
-export const updateFinancialItem = createAsyncThunk<Item, { id: string; financialitem: Partial<FinancialItemFormData> }>('financial-item/updateFinancialItem', async ({ id, financialitem }) => {
-  const options = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(financialitem),
-  };
-
-  const response = await fetch(`${BASE_URL}/api/financial-item/${id}`, options);
-  const data = await response.json();
-  return data;
-});
+export const updateFinancialItem = createAsyncThunk<
+  Item,
+  { id: string; financialitem: Partial<FinancialItemFormData> }
+>(
+  'financial-item/updateFinancialItem',
+  async ({ id, financialitem }, { rejectWithValue }) => {
+    const response = await fetch(
+      `${BASE_URL}/api/financial-item/${id}`,
+      {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(financialitem),
+      }
+    );
+    if (response.status === 401) {
+      return rejectWithValue('UNAUTHENTICATED');
+    }
+    if (!response.ok) {
+      const error = await response.json();
+      return rejectWithValue(error);
+    }
+    return response.json();
+  }
+);
 
 const financialItemSlice = createSlice({
   name: 'financialitems',
@@ -109,6 +125,11 @@ const financialItemSlice = createSlice({
       const index = state.financialitems.findIndex(item => item._id === action.payload._id);
       if (index !== -1) {
         state.financialitems[index] = action.payload;
+      }
+    });
+    builder.addCase(updateFinancialItem.rejected, (state, action) => {
+      if (action.payload === 'UNAUTHENTICATED') {
+        state.isAuthenticated = false;
       }
     });
   },
