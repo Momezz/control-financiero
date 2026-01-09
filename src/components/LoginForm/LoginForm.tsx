@@ -1,6 +1,10 @@
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/redux/store';
+"use client";
+
+import { AppDispatch, RootState } from '@/redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import useForm from '@/redux/hooks';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { setAccessToken } from '@/redux/features/auth/authSlice';
 import { login } from '@/services/auth';
 import styles from './login-form.module.css';
@@ -15,7 +19,16 @@ interface userLogged {
 }
 
 const LoginForm = ({ onClose }: LoginUser) => {
+  const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/');
+    }
+  }, [isAuthenticated]);
   const { form, handleChange } = useForm<userLogged>({ email: "", password: "" });
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

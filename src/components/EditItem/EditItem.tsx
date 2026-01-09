@@ -1,8 +1,9 @@
 "use client";
 
-import { AppDispatch } from '@/redux/store';
+import { AppDispatch, RootState } from '@/redux/store';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdDone } from 'react-icons/md';
 import type { Item } from '@/redux/features/financialItem/financialItemSlice';
 import { updateFinancialItem, FinancialItemFormData } from '@/redux/features/financialItem/financialItemSlice';
@@ -16,6 +17,16 @@ interface EditItemProps {
 }
 
 const EditItem = ({ item, onClose }: EditItemProps) => {
+  const router = useRouter();
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/login');
+    }
+  }, [isAuthenticated]);
   const dispatch = useDispatch<AppDispatch>();
   const [options, setOptions] = useState([]);
   const [id, setId] = useState(item._id);
