@@ -1,0 +1,48 @@
+.banner__container {
+  background-image: url('../../../public/banner-img.png');
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  display: flex;
+  height: 220px;
+  width: 100%;
+}
+
+.banner__dollar_sign {
+  margin-right: 5px;
+}
+
+.banner__title {
+  text-shadow: 2px 2px 3px var(--body-background);
+  color: var(--done);
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.banner__item_container {
+  flex-direction: column;
+  align-items: center;
+  max-width: 1800px;
+  display: flex;
+  width: 100%;
+}
+
+.banner__layer {
+  background-color: var(--background-banner);
+  position: absolute;
+  height: 100%;
+  z-index: -10;
+  width: 100%;
+}
+
+@media(min-width: 768px) {
+  .banner__item_container {
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
+
+  .banner__title {
+    font-size: 29px;
+  }
+}

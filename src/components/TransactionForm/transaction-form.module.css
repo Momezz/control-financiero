@@ -1,0 +1,151 @@
+.transaction_form__container {
+  background: linear-gradient(0deg, var(--light-gradient) 0%, var(--dark-gradient) 100%);
+  color: var(--done);
+  margin: 0 auto;
+  padding: 5px;
+  width: 100%;
+}
+
+.transaction_form__option {
+  width: 100%;
+}
+
+.transaction_form__select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--color-item);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--done);
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  outline: none;
+  width: 100%;
+}
+
+.transaction_form__category {
+  border: 1px solid var(--color-item);
+  flex-direction: column;
+  margin-bottom: 10PX;
+  text-align: center;
+  margin-top: 12px;
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+
+.transaction_form__category_btn {
+  border: 1px solid var(--color-item);
+  transition: transform 0.5s ease;
+  margin-top: 5px;
+  margin: 0 auto;
+  height: 40px;
+  width: 50%;
+}
+
+.transaction_form__category_btn:hover {
+  transform: scale(1.1);
+}
+
+.transaction_form__category_label {
+  margin-top: 12px;
+  height: 40px;
+}
+
+.transaction_form__category_select {
+  border: 1px solid var(--color-item);
+  background-color: transparent;
+  text-align: center;
+  margin-top: 5px;
+  margin: 4px;
+  margin: auto;
+  width: 90%;
+}
+
+.transaction_form__category_select:focus {
+  background-color: var(--light-gradient);
+  border: solid 2px var(--color-item);  
+}
+
+.transaction_form__label {
+  margin-bottom: 5px;
+  margin-top: 12px;
+  height: 40px;
+  width: 100%;
+}
+
+.transaction_form__input {
+  border: 1px solid var(--color-item);
+  background-color: transparent;
+  padding: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.transaction_form__btn_cont {
+  padding-right: 20px;
+  margin-top: 15px;
+  text-align: end;
+  width: 100%;
+}
+
+.transaction_form__btn {
+  transition: transform 0.5s ease;
+  border: 2px solid var(--done);
+  margin-bottom: 15px;
+  border-radius: 50%;
+  color: var(--done);
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.transaction_form__btn:hover {
+  transform: scale(1.1);
+}
+
+@media(min-width: 1044px){
+  .transaction_form__container {
+    min-width: 500px;
+    font-size: 20px;
+    display: flex;
+    width: 100%;
+  }
+
+  .transaction_form__option {
+    border: 1px solid var(--color-item);
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    height: 93px;
+    width: 260px;
+  }
+
+  .transaction_form__category {
+    height: 80px;
+  }
+
+  .transaction_form__category_btn {
+    width: 70%;
+  }
+
+  .transaction_form__button {
+    height: 40px;
+    width: 40px;
+    margin: 1px;
+  }
+
+  .transaction_form__input {
+    height: 80px;
+  }
+
+  .transaction_form__btn_cont {
+    text-align: center;
+    margin-top: 35px;
+    width: 250px;
+  }
+
+  .transaction_form__btn {
+    font-size: 40px;
+  }
+}
