@@ -11,14 +11,12 @@ import styles from '@/components/Banner/banner.module.css';
 
 const Banner = () => {
   const dispatch = useDispatch<AppDispatch>();
-
   useEffect(() => {
     dispatch(getFinancialItems());
   }, [dispatch]);
   const balance = useSelector(selectBalance);
   const totalIncome = useSelector(selectTotalIncome);
   const totalExpense = useSelector(selectTotalExpense);
-
   return (
     <article className={styles.banner__container}>
       <h2 className={styles.banner__title}>Presupuesto disponible</h2>
