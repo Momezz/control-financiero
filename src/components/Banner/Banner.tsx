@@ -1,7 +1,7 @@
 "use client";
 
-import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '@/redux/store';
+import { useSelector, useDispatch } from 'react-redux';
 import FinancialItem from '../FinancialItem/FinancialItem';
 import { useEffect } from 'react';
 import { selectBalance, selectTotalExpense, selectTotalIncome } from '@/redux/features/financialItem/selectors';
