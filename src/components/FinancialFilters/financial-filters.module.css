@@ -1,0 +1,354 @@
+.financial_filters {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    border: 1px solid var(--background-banner);
+    background-color: var(--color-item);
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Encabezado */
+.financial_filters__header {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Título */
+.financial_filters__title {
+    color: var(--negative-item);
+    line-height: 1.75rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Descripción */
+.financial_filters__description {
+    color: var(--negative-item);
+    line-height: 1.25rem;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+}
+
+/* Icono */
+.financia_filters__icon {
+    color: var(--negative-item);
+    height: 1.25rem;
+    width: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* Contenedor de los resúmenes */
+.summary_grid {
+    grid-template-columns: minmax(0, 1fr);
+    display: grid;
+    gap: 0.75rem;
+}
+
+/* Dos columnas en pantallas medianas */
+@media (min-width: 640px) {
+    .summary_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Estilos comunes de los botones */
+.summary_button {
+    border-radius: 0.75rem;
+    align-items: center;
+    border: 1px solid;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    padding: 1rem;
+    gap: 0.75rem;
+    transition: background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+/* Resumen semanal */
+.weekly_button {
+    background-color: var(--light-gradient);
+    border-color: var(--positive-item);
+}
+
+.weekly_button:hover {
+    opacity: 0.8;
+}
+
+/* Resumen mensual */
+.monthly_button {
+    background-color: var(--positive-item);
+    border-color: var(--light-gradient);
+}
+
+.monthly_button:hover {
+    opacity: 0.8;
+}
+
+/* Contenedor de los iconos */
+.summary_icon {
+    justify-content: center;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Icono Lucide */
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Icono semanal */
+.weekly_icon {
+    background-color: var(--color-item);
+    color: var(--light-gradient);
+}
+
+/* Icono mensual */
+.monthly_icon {
+    background-color: var(--color-item);
+    color: var(--positive-item);
+}
+
+/* Títulos */
+.summary_title {
+    font-weight: 600;
+    display: block;
+}
+
+/* Descripciones */
+.summary_description {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    display: block;
+}
+
+/* Textos semanales */
+.weekly_title {
+    color: var(--color-item);
+}
+
+.weekly_description {
+    color: var(--color-item);
+}
+
+/* Textos mensuales */
+.monthly_title {
+    color: var(--color-item);
+}
+
+.monthly_description {
+    color: var(--color-item);
+}
+
+/* Sección de períodos */
+.period_section {
+    flex-direction: column;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Título */
+.period_heading {
+    color: var(--negative-item);
+    line-height: 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Contenedor de botones */
+.period_options {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Estilos comunes */
+.period_button {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    line-height: 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+/* Botón seleccionado */
+.period_button__active {
+    border: 1px solid var(--negative-item);
+    background-color: var(--negative-item);
+    color: var(--color-item);
+}
+
+/* Botones no seleccionados */
+.period_button__inactive {
+    border: 1px solid var(--negative-item);
+    color: var(--background-banner);
+    background-color: transparent;
+}
+
+.period_button__inactive:hover {
+    opacity: 0.8;
+}
+
+/* Sección de fechas */
+.custom_date__section {
+    flex-direction: column;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Título de la sección */
+.custom_date__heading {
+    color: var(--negative-item);
+    line-height: 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Cuadrícula de fechas */
+.date_grid {
+    grid-template-columns: minmax(0, 1fr);
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .date_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Etiqueta de cada campo */
+.date_label {
+    flex-direction: column;
+    display: flex;
+    min-width: 0;
+    gap: 0.5rem;
+}
+
+/* Texto de la etiqueta */
+.date_labelText {
+    color: var(--negative-item);
+    line-height: 1.25rem;
+    font-size: 0.875rem;
+    display: block;
+}
+
+/* Contenedor del icono y el input */
+.date_input_wrapper {
+    border: 1px solid var(--background-banner);
+    transition: border-color 0.2s ease;
+    border-radius: 0.5rem;
+    align-items: center;
+    padding: 0 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.date_input_wrapper:focus-within {
+    border-color: var(--negative-item);
+}
+
+/* Icono del calendario */
+.date_icon {
+    color: var(--background-banner);
+    flex-shrink: 0;
+    height: 1rem;
+    width: 1rem;
+}
+
+/* Input de fecha */
+.date_input {
+    background-color: transparent;
+    color: var(--background-banner);
+    line-height: 1.25rem;
+    color-scheme: light;
+    padding: 0.625rem 0;
+    font-family: inherit;
+    font-size: 0.875rem;
+    outline: none;
+    border: none;
+    min-width: 0;
+    width: 100%;
+}
+
+/* Contenedor de acciones */
+.filter_actions {
+    justify-content: space-between;
+    padding-top: 0.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Botón para limpiar filtros */
+.clear_filters_button {
+    transition: color 0.2s ease;
+    color: var(--light-gradient);
+    background: transparent;
+    font-family: inherit;
+    display: inline-flex;
+    line-height: 1.25rem;
+    align-items: center;
+    font-size: 0.975rem;
+    cursor: pointer;
+    border: none;
+    gap: 0.5rem;
+    padding: 0;
+}
+
+.clear_filters_button:hover {
+    color: var(--dark-gradient);
+}
+
+/* Icono de reinicio */
+.reset_icon {
+    flex-shrink: 0;
+    height: 1rem;
+    width: 1rem;
+}
+
+/* Botón aplicar período */
+.apply_filter__button {
+    background-color: var(--light-gradient);
+    color: var(--color-item);
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    line-height: 1.25rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.apply_filter__button:hover:not(:disabled) {
+    background-color: var(--dark-gradient);
+}
+
+/* Estado deshabilitado */
+.apply_filter__button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
