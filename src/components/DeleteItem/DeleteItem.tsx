@@ -1,6 +1,6 @@
 import { AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import type { Item } from '@/redux/features/financialItem/financialItemSlice';
+import type { Item } from '@/types/Item';
 import { deleteFinancialItem } from '@/redux/features/financialItem/financialItemSlice';
 import styles from './delete-item.module.css';
 

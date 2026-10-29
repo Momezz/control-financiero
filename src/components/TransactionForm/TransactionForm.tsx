@@ -8,7 +8,7 @@ import useForm from '@/redux/hooks';
 import { createFinancialItem } from '@/redux/features/financialItem/financialItemSlice';
 import { getCategories } from '@/services/categories';
 import CreateCategory from '../CreateCategory/CreateCategory';
-import { FinancialItemFormData } from '@/redux/features/financialItem/financialItemSlice';
+import { FinancialItemFormData } from '@/types/Item';
 import styles from '@/components/TransactionForm/transaction-form.module.css';
 
 const TransactionForm = () => {

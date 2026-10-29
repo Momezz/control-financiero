@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 import { FaEdit, FaEye, FaChevronCircleRight, FaChevronCircleLeft } from 'react-icons/fa';
 import { formatNumber } from '@/utils/numberFormat';
-import type { Item } from '@/redux/features/financialItem/financialItemSlice';
+import type { Item } from '@/types/Item';
 import SeeDetails from '../SeeDetails/SeeDetails';
 import DeleteItem from '../DeleteItem/DeleteItem';
 import EditItem from '../EditItem/EditItem';
