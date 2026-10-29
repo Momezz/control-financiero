@@ -1,15 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { Item, FinancialItemFormData } from '@/types/Item';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
-export interface Item {
-  _id: string;
-  transactionType: string;
-  category: string;
-  description: string;
-  amount: number;
-  createdAt: string;
-  updatedAt: string;
-}
 
 interface ItemState {
   financialitems: Item[];
@@ -26,13 +17,6 @@ const initialState: ItemState = {
   loading: false,
   error: null,
 };
-
-export interface FinancialItemFormData {
-  transactionType: string;
-  category: string;
-  description: string;
-  amount: number | string;
-}
 
 export const getFinancialItemById = createAsyncThunk<Item, string>('financial-item/getFinancialItemById', async (id) => {
   const resp = await fetch(`${BASE_URL}/api/financial-item/${id}`);
