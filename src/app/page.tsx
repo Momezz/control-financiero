@@ -14,14 +14,20 @@ export default function Home() {
     to: '',
   });
 
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   return (
     <main>
       <div className="w-full h-200px">
-        <Banner period={period} />
+        <Banner
+          period={period}
+          selectedCategories={selectedCategories}
+        />
         <TransactionForm />
         <TableContainer
           period={period}
           onPeriodChange={setPeriod}
+          selectedCategories={selectedCategories}
+          onCategoriesChange={setSelectedCategories}
         />
         <Footer />
       </div>
