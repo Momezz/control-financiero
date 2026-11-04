@@ -352,3 +352,43 @@
     cursor: not-allowed;
     opacity: 0.4;
 }
+
+.category_section {
+    margin-top: 1.5rem;
+}
+
+.category_description {
+    color: var(--background-banner);
+    font-size: 0.875rem;
+    margin-top: 0.4rem;
+}
+
+.category_options {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.category_option {
+    border: 1px solid var(--background-banner);
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.6rem;
+    align-items: center;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.category_option input {
+    accent-color: var(--body-background);
+    cursor: pointer;
+}
+
+.category_clear_button {
+    color: var(--body-background);
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}

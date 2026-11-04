@@ -16,9 +16,10 @@ import type { PeriodFilter } from '@/types/PeriodFilter';
 
 interface BannerProps {
   period: PeriodFilter;
+  selectedCategories: string[];
 }
 
-const Banner = ({ period }: BannerProps) => {
+const Banner = ({ period, selectedCategories }: BannerProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -27,23 +28,31 @@ const Banner = ({ period }: BannerProps) => {
 
   const incomes = useSelector(selectIncomeList);
   const expenses = useSelector(selectExpenseList);
-
-  const filterItems = (items: Item[]): Item[] => {
-    if (period.type === 'all') return items;
-
-    return items.filter((item) => {
-      const date = new Date(item.createdAt);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const itemDate = `${year}-${month}-${day}`;
-
-      return itemDate >= period.from && itemDate <= period.to;
-    });
+  const matchesPeriod = (item: Item): boolean => {
+    if (period.type === 'all') return true;
+    const date = new Date(item.createdAt);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const itemDate = `${year}-${month}-${day}`;
+    return itemDate >= period.from && itemDate <= period.to;
   };
 
-  const filteredIncomes = filterItems(incomes);
-  const filteredExpenses = filterItems(expenses);
+  const filteredIncomes = incomes.filter(item => {
+    const matchesDate = matchesPeriod(item);
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(item.category?.trim());
+    return matchesDate && matchesCategory;
+  });
+
+  const filteredExpenses = expenses.filter(item => {
+    const matchesDate = matchesPeriod(item);
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(item.category?.trim());
+    return matchesDate && matchesCategory;
+  });
 
   const totalIncome = filteredIncomes.reduce(
     (total, item) => total + item.amount,
